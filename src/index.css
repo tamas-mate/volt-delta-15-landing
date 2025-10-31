@@ -76,5 +76,50 @@ body {
   @apply text-xs font-medium;
 }
 
+@utility translate-up {
+  @apply transition-all duration-300 ease-in-out hover:-translate-y-0.5;
+}
+
+@layer base {
+  h1 {
+    @apply text-center text-2xl font-semibold lg:text-3xl 2xl:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold 2xl:text-4xl;
+  }
+}
+
 @layer components {
+  header {
+    @apply flex-center fixed top-0 left-0 z-50 min-h-[7vh] w-screen bg-black;
+
+    nav {
+      @apply flex-center md:flex-between container mx-auto px-5 2xl:px-0;
+
+      img {
+        @apply translate-up h-8 cursor-pointer lg:h-10;
+      }
+
+      ul {
+        @apply md:flex-center hidden gap-8;
+
+        a {
+          @apply font-regular hidden cursor-pointer text-sm text-white opacity-80 transition-all duration-300 ease-in-out hover:underline hover:underline-offset-2 hover:opacity-100 md:block;
+        }
+      }
+    }
+  }
+
+  #hero {
+    @apply mt-25 h-fit text-white md:mt-40;
+
+    button {
+      @apply relative z-10 cursor-pointer rounded-full bg-linear-to-r from-[#12b4ff] to-[#ff39e1] px-6 py-2 text-lg font-semibold transition-all duration-300 ease-in-out hover:text-black;
+    }
+
+    p {
+      @apply lg:h3-semibold base-semibold;
+    }
+  }
 }
