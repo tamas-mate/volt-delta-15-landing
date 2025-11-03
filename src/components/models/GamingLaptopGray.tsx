@@ -10,59 +10,63 @@ import * as THREE from "three";
 import type { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
-	nodes: {
-		Object_10: THREE.Mesh;
-		Object_4: THREE.Mesh;
-		Object_7: THREE.Mesh;
-		Object_14: THREE.Mesh;
-		Object_16: THREE.Mesh;
-	};
-	materials: {
-		PaletteMaterial001: THREE.MeshStandardMaterial;
-		PaletteMaterial002: THREE.MeshStandardMaterial;
-		["Material.004"]: THREE.MeshStandardMaterial;
-		["Material.009"]: THREE.MeshStandardMaterial;
-		["Material.010"]: THREE.MeshStandardMaterial;
-	};
-	animations: [];
+  nodes: {
+    Object_10: THREE.Mesh;
+    Object_4: THREE.Mesh;
+    Object_7: THREE.Mesh;
+    Object_14: THREE.Mesh;
+    Object_16: THREE.Mesh;
+  };
+  materials: {
+    PaletteMaterial001: THREE.MeshStandardMaterial;
+    PaletteMaterial002: THREE.MeshStandardMaterial;
+    ["Material.004"]: THREE.MeshStandardMaterial;
+    ["Material.009"]: THREE.MeshStandardMaterial;
+    ["Material.010"]: THREE.MeshStandardMaterial;
+  };
+  animations: [];
 };
 
-export function GamingLaptopGray(props: JSX.IntrinsicElements["group"]) {
-	const { nodes, materials } = useGLTF("/models/gaming-laptop-gray-transformed.glb") as unknown as GLTFResult;
-	return (
-		<group {...props} dispose={null}>
-			<mesh
-				geometry={nodes.Object_10.geometry}
-				material={materials.PaletteMaterial001}
-				position={[0, 0.38, -0.1]}
-				rotation={[-0.2, -1.57, 1.57]}
-			/>
-			<mesh
-				geometry={nodes.Object_4.geometry}
-				material={materials.PaletteMaterial002}
-				position={[0, 0, 0]}
-				rotation={[-3.35, -1.58, 1.57]}
-			/>
-			<mesh
-				geometry={nodes.Object_7.geometry}
-				material={materials["Material.004"]}
-				position={[0, 0, 0]}
-				rotation={[-3.35, -1.58, 1.57]}
-			/>
-			<mesh
-				geometry={nodes.Object_14.geometry}
-				material={materials["Material.009"]}
-				position={[0, -0.1, 1.19]}
-				rotation={[0, -1.56, 0]}
-			/>
-			<mesh
-				geometry={nodes.Object_16.geometry}
-				material={materials["Material.010"]}
-				position={[0, -0.08, 1.19]}
-				rotation={[0, -1.56, 0]}
-			/>
-		</group>
-	);
+export default function GamingLaptopGray(
+  props: JSX.IntrinsicElements["group"],
+) {
+  const { nodes, materials } = useGLTF(
+    "/models/gaming-laptop-gray-transformed.glb",
+  ) as unknown as GLTFResult;
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        geometry={nodes.Object_10.geometry}
+        material={materials.PaletteMaterial001}
+        position={[0, 0.38, -0.1]}
+        rotation={[-0.2, -1.57, 1.57]}
+      />
+      <mesh
+        geometry={nodes.Object_4.geometry}
+        material={materials.PaletteMaterial002}
+        position={[0, 0, 0]}
+        rotation={[-3.35, -1.58, 1.57]}
+      />
+      <mesh
+        geometry={nodes.Object_7.geometry}
+        material={materials["Material.004"]}
+        position={[0, 0, 0]}
+        rotation={[-3.35, -1.58, 1.57]}
+      />
+      <mesh
+        geometry={nodes.Object_14.geometry}
+        material={materials["Material.009"]}
+        position={[0, -0.1, 1.19]}
+        rotation={[0, -1.56, 0]}
+      />
+      <mesh
+        geometry={nodes.Object_16.geometry}
+        material={materials["Material.010"]}
+        position={[0, -0.08, 1.19]}
+        rotation={[0, -1.56, 0]}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/models/gaming-laptop-gray-transformed.glb");

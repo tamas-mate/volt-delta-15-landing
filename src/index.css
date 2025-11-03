@@ -112,7 +112,7 @@ body {
   }
 
   #hero {
-    @apply mt-25 h-fit text-white md:mt-40;
+    @apply h-fit w-full text-white;
 
     button {
       @apply relative z-10 cursor-pointer rounded-full bg-linear-to-r from-[#12b4ff] to-[#ff39e1] px-6 py-2 text-lg font-semibold transition-all duration-300 ease-in-out hover:text-black;
@@ -120,6 +120,46 @@ body {
 
     p {
       @apply lg:h3-semibold base-semibold;
+    }
+  }
+
+  #product-viewer {
+    @apply relative min-h-[93vh] w-full px-5 2xl:px-0;
+
+    h2 {
+      @apply text-3xl font-semibold text-white lg:text-6xl;
+    }
+
+    .controls {
+      @apply absolute bottom-40 left-1/2 z-50 -translate-x-1/2 lg:bottom-40;
+
+      .info {
+        @apply rounded-lg bg-black/20 px-2 py-1 text-xs text-white;
+      }
+
+      .color-control {
+        @apply flex-between gap-4 rounded-full bg-neutral-800 px-6 py-3;
+
+        div {
+          @apply size-7 cursor-pointer rounded-full;
+        }
+
+        .active {
+          @apply ring-light-100 size-5 ring-5;
+        }
+      }
+
+      .size-control {
+        @apply small-medium flex-between gap-2 rounded-full bg-neutral-800 px-6 py-2.5;
+
+        div {
+          @apply flex-center size-8 cursor-pointer rounded-full bg-white text-black;
+        }
+      }
+    }
+
+    #canvas {
+      @apply relative z-40 h-[80vh]! w-full! lg:h-dvh!;
     }
   }
 }
