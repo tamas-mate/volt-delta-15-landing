@@ -209,4 +209,60 @@ body {
       }
     }
   }
+
+  #performance {
+    @apply relative flex h-full w-dvw flex-col items-center overflow-hidden;
+
+    h2 {
+      @apply max-w-2xl text-center text-3xl font-semibold text-white lg:text-6xl;
+    }
+
+    .wrapper {
+      @apply relative h-[50vh] w-7xl lg:h-screen 2xl:w-400;
+
+      img {
+        @apply max-w-40 object-cover object-center lg:max-w-108 2xl:max-w-140;
+      }
+
+      .p1 {
+        @apply absolute bottom-1/2 left-[23%] z-1 max-sm:left-[33%];
+      }
+
+      .p2 {
+        @apply absolute right-[17%] bottom-[40%] z-3 max-sm:right-[37%];
+      }
+
+      .p3 {
+        @apply absolute right-[15%] bottom-1/4 z-2 max-sm:right-[35%];
+      }
+
+      .p4 {
+        @apply absolute right-[10%] bottom-[15%] z-1 max-sm:right-[30%];
+      }
+
+      .p5 {
+        @apply absolute bottom-[20%] left-1/2 -translate-x-1/2 scale-150;
+      }
+
+      .p6 {
+        @apply absolute bottom-1/4 left-1/4 z-2 max-sm:left-[35%];
+      }
+
+      .p7 {
+        @apply absolute bottom-[5%] left-[15%] z-3 max-sm:left-[35%];
+      }
+    }
+
+    .content {
+      @apply mx-auto mt-24 max-w-xl;
+
+      p {
+        @apply lg:h3-semibold base-semibold translate-y-10 px-5 text-center opacity-0;
+
+        span {
+          @apply text-white;
+        }
+      }
+    }
+  }
 }
