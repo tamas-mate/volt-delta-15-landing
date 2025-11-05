@@ -1,0 +1,21 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="triangleMask">
+      <!-- White background makes everything visible -->
+      <rect width="1920" height="1080" fill="white"/>
+      <!-- Black triangle cuts out transparency -->
+      <polygon
+        points="960,193.58983848622455 1260,713.2050807568877 660,713.2050807568877"
+        fill="black"
+      />
+    </mask>
+  </defs>
+  
+  <!-- Black background with triangle cutout -->
+  <rect
+    width="1920"
+    height="1080"
+    fill="black"
+    mask="url(#triangleMask)"
+  />
+</svg>

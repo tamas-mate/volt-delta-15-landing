@@ -37,14 +37,14 @@
 
 html {
   width: 100vw;
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   width: 100vw;
-  overflow-x: hidden;
   background-color: #000;
+  overflow-x: hidden;
+  color: var(--color-light-100);
   font-family: var(--font-semibold);
 }
 
@@ -81,6 +81,10 @@ body {
 }
 
 @layer base {
+  [id] {
+    scroll-margin-top: 7vh;
+  }
+
   h1 {
     @apply text-center text-2xl font-semibold lg:text-3xl 2xl:text-5xl;
   }
@@ -92,7 +96,7 @@ body {
 
 @layer components {
   header {
-    @apply flex-center fixed top-0 left-0 z-50 min-h-[7vh] w-screen bg-black;
+    @apply flex-center sticky top-0 z-60 min-h-[7vh] w-screen bg-black;
 
     nav {
       @apply flex-center md:flex-between container mx-auto px-5 2xl:px-0;
@@ -102,10 +106,10 @@ body {
       }
 
       ul {
-        @apply md:flex-center hidden gap-8;
+        @apply md:flex-center hidden gap-x-8;
 
         a {
-          @apply font-regular hidden cursor-pointer text-sm text-white opacity-80 transition-all duration-300 ease-in-out hover:underline hover:underline-offset-2 hover:opacity-100 md:block;
+          @apply font-regular cursor-pointer text-sm text-white opacity-80 transition-all duration-300 ease-in-out hover:underline hover:underline-offset-2 hover:opacity-100;
         }
       }
     }
@@ -115,7 +119,7 @@ body {
     @apply h-fit w-full text-white;
 
     button {
-      @apply relative z-10 cursor-pointer rounded-full bg-linear-to-r from-[#12b4ff] to-[#ff39e1] px-6 py-2 text-lg font-semibold transition-all duration-300 ease-in-out hover:text-black;
+      @apply z-10 cursor-pointer rounded-full bg-linear-to-r from-[#12b4ff] to-[#ff39e1] px-6 py-2 text-lg font-semibold transition-all duration-300 ease-in-out hover:text-black;
     }
 
     p {
@@ -124,17 +128,17 @@ body {
   }
 
   #product-viewer {
-    @apply relative min-h-[93vh] w-full px-5 2xl:px-0;
+    @apply relative w-full px-5 text-white 2xl:px-0;
 
     h2 {
-      @apply text-3xl font-semibold text-white lg:text-6xl;
+      @apply text-3xl font-semibold lg:text-6xl;
     }
 
     .controls {
       @apply absolute bottom-40 left-1/2 z-50 -translate-x-1/2 lg:bottom-40;
 
       .info {
-        @apply rounded-lg bg-black/20 px-2 py-1 text-xs text-white;
+        @apply rounded-lg bg-black/20 px-2 py-1 text-xs;
       }
 
       .color-control {
@@ -159,7 +163,50 @@ body {
     }
 
     #canvas {
-      @apply relative z-40 h-[80vh]! w-full! lg:h-dvh!;
+      @apply relative z-40 h-[80vh]! w-full! lg:h-[90vh]!;
+    }
+  }
+
+  #showcase {
+    @apply relative;
+
+    .media {
+      @apply relative lg:overflow-hidden;
+
+      video {
+        @apply w-full object-cover object-center;
+      }
+
+      .mask {
+        @apply absolute top-0 h-full;
+
+        img {
+          @apply h-full scale-150 lg:scale-100;
+          transform: matrix(80, 0, 0, 80, 0, 0);
+        }
+
+        @media (max-width: 1024px) {
+          img {
+            transform: matrix(1, 0, 0, 1, 0, 0);
+          }
+        }
+      }
+    }
+
+    .content {
+      @apply text-dark-100 relative z-10 my-5 bg-black text-xl font-semibold lg:-mt-40 lg:opacity-0 2xl:-mt-70;
+
+      .wrapper {
+        @apply container mx-auto flex flex-col justify-center gap-20 px-5 pb-20 lg:flex-row 2xl:px-0;
+      }
+
+      h2 {
+        @apply text-3xl font-semibold text-white lg:text-7xl;
+      }
+
+      h3 {
+        @apply text-xl font-semibold text-white lg:text-5xl;
+      }
     }
   }
 }
