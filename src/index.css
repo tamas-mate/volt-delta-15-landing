@@ -267,7 +267,7 @@ body {
   }
 
   #features {
-    @apply relative pt-40;
+    @apply relative w-full pt-40;
 
     h2 {
       @apply mx-auto max-w-3xl text-center text-3xl font-semibold text-white lg:text-7xl;
@@ -282,6 +282,110 @@ body {
 
       p {
         @apply lg:h3-semibold base-semibold;
+      }
+    }
+  }
+
+  #highlights {
+    @apply col-center container w-full gap-y-15 max-lg:px-5 lg:py-40;
+
+    h2 {
+      @apply max-w-3xl text-center text-3xl font-semibold text-white lg:text-7xl;
+    }
+
+    h3 {
+      @apply text-center text-xl font-semibold text-[#F5F5F7] lg:text-3xl;
+    }
+
+    .masonry {
+      @apply grid grid-cols-1 gap-5 text-[#F5F5F7] lg:grid-cols-2 xl:px-60;
+
+      .left-column {
+        @apply flex -translate-y-5 flex-col justify-between gap-5 opacity-0;
+
+        div:first-of-type {
+          @apply h-full rounded-3xl bg-[url(/highlight-bg.png)] bg-cover bg-no-repeat p-10 lg:pt-20 2xl:pt-32;
+
+          p {
+            @apply max-w-2xs text-4xl font-semibold;
+          }
+        }
+
+        p {
+          @apply max-w-2xs text-4xl font-semibold;
+        }
+
+        div:last-of-type {
+          @apply flex items-center gap-7 rounded-3xl bg-[#1D1D1F] p-10;
+
+          p {
+            @apply font-semibold lg:text-2xl 2xl:text-3xl;
+          }
+        }
+      }
+
+      .right-column {
+        @apply flex -translate-y-5 flex-col justify-between gap-5 opacity-0;
+
+        p {
+          @apply max-w-2xs text-4xl font-semibold;
+        }
+        .apple-gradient {
+          @apply relative flex items-center gap-7 rounded-3xl p-10;
+
+          background: #1d1d1f;
+          background-clip: padding-box; /* !important */
+          border: 3px solid transparent; /* !important */
+
+          ::before {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            inset: 0px;
+            z-index: -1;
+            margin: -5px; /* !important */
+            border-radius: 24px; /* !important */
+            background: linear-gradient(
+              91deg,
+              #12b4ff 0%,
+              #ff39e1 42%,
+              #bb64ff 74%,
+              #0096ff 100%
+            );
+          }
+
+          p {
+            @apply font-semibold lg:text-2xl 2xl:text-3xl;
+
+            span {
+              background: linear-gradient(
+                91deg,
+                #0096ff 0%,
+                #ff39e1 42%,
+                #ff39e1 74%,
+                #12b4ff 100%
+              );
+              background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
+
+        div:last-of-type {
+          @apply h-full rounded-3xl bg-[#1D1D1F] p-10 lg:pt-20 2xl:pt-32;
+
+          p {
+            @apply max-w-sm text-4xl font-semibold;
+
+            .green-gradient {
+              background: linear-gradient(90deg, #35a98a 0%, #6dd400 100%);
+              background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
       }
     }
   }
