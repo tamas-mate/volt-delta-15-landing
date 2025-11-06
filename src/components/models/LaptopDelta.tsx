@@ -4,10 +4,12 @@ Command: npx gltfjsx@6.5.3 laptop-updated.glb -t -T
 Files: laptop-updated.glb [14.89MB] > C:\Users\Tomi\Downloads\laptop-updated-transformed.glb [773.41KB] (95%)
 */
 
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { type JSX } from "react";
 import * as THREE from "three";
 import type { GLTF } from "three-stdlib";
+
+import useLaptopStore from "../../store";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -27,10 +29,12 @@ type GLTFResult = GLTF & {
   animations: [];
 };
 
-export default function GamingLaptop(props: JSX.IntrinsicElements["group"]) {
+export default function LaptopDelta(props: JSX.IntrinsicElements["group"]) {
+  const { texture } = useLaptopStore();
   const { nodes, materials } = useGLTF(
     "/models/gaming-laptop-transformed.glb",
   ) as unknown as GLTFResult;
+  const screen = useVideoTexture(texture);
 
   return (
     <group {...props} dispose={null}>
@@ -51,10 +55,11 @@ export default function GamingLaptop(props: JSX.IntrinsicElements["group"]) {
       {/* screen texture */}
       <mesh
         geometry={nodes.Object_7.geometry}
-        material={materials["Material.004"]}
         position={[0, 0, 0]}
         rotation={[-3.35, -1.58, 1.57]}
-      />
+      >
+        <meshBasicMaterial map={screen} />
+      </mesh>
       {/* screen lid */}
       <mesh
         geometry={nodes.Object_14.geometry}

@@ -265,4 +265,24 @@ body {
       }
     }
   }
+
+  #features {
+    @apply relative pt-40;
+
+    h2 {
+      @apply mx-auto max-w-3xl text-center text-3xl font-semibold text-white lg:text-7xl;
+    }
+
+    #f-canvas {
+      @apply relative z-40 h-dvh! w-full!;
+    }
+
+    .box {
+      @apply absolute max-w-xs;
+
+      p {
+        @apply lg:h3-semibold base-semibold;
+      }
+    }
+  }
 }
