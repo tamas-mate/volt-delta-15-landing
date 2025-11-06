@@ -101,9 +101,18 @@ const featureSequence = [
   { videoPath: "/videos/writing-ai.mp4", boxClass: ".box5", delay: 0 },
 ];
 
+const footerLinks = [
+  { label: "Privacy & Cookies", link: "#privacy" },
+  { label: "Warranty & Returns", link: "#warranty" },
+  { label: "Support", link: "#support" },
+  { label: "Licenses & Legal", link: "#legal" },
+  { label: "Sitemap", link: "#sitemap" },
+];
+
 export {
   features,
   featureSequence,
+  footerLinks,
   navLinks,
   performanceImages,
   performanceImgPositions,
