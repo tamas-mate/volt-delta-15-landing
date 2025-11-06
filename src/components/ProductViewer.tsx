@@ -1,13 +1,14 @@
 import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 
-import useMacbookStore from "../store";
+import { Suspense } from "react";
+import useLaptopStore from "../store";
 import { cl } from "../utils/utils";
 import Lights from "./three/Lights";
 import ModelSwitcher from "./three/ModelSwitcher";
 
 const ProductViewer = () => {
-  const { color, scale, setColor, setScale } = useMacbookStore();
+  const { color, scale, setColor, setScale } = useLaptopStore();
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
@@ -38,7 +39,7 @@ const ProductViewer = () => {
                   : "bg-transparent text-white",
               )}
             >
-              <p>14"</p>
+              <p>12"</p>
             </div>
             <div
               onClick={() => setScale(0.6)}
@@ -49,21 +50,31 @@ const ProductViewer = () => {
                   : "bg-transparent text-white",
               )}
             >
-              <p>16"</p>
+              <p>14"</p>
             </div>
           </div>
         </div>
       </div>
       <Canvas
         id="canvas"
+        dpr={[1, 1.5]}
+        gl={{
+          antialias: false,
+          stencil: false,
+          depth: true,
+          powerPreference: "high-performance",
+          preserveDrawingBuffer: false,
+        }}
         camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}
       >
         <Lights />
-        <ModelSwitcher
-          isMobile={isMobile}
-          color={color}
-          scale={isMobile ? scale - 0.1 : scale}
-        />
+        <Suspense fallback={null}>
+          <ModelSwitcher
+            isMobile={isMobile}
+            color={color}
+            scale={isMobile ? scale - 0.1 : scale}
+          />
+        </Suspense>
       </Canvas>
     </section>
   );

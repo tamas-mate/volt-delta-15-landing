@@ -20,6 +20,8 @@
   src: url("/fonts/bold.otf");
 }
 
+@custom-variant hover (&:hover);
+
 * {
   scrollbar-color: var(--color-dark-100) var(--color-black);
 }
@@ -37,13 +39,13 @@
 
 html {
   width: 100vw;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   width: 100vw;
   background-color: #000;
-  overflow-x: hidden;
   color: var(--color-light-100);
   font-family: var(--font-semibold);
 }
@@ -86,11 +88,11 @@ body {
   }
 
   h1 {
-    @apply text-center text-2xl font-semibold lg:text-3xl 2xl:text-5xl;
+    @apply text-center text-4xl font-semibold 2xl:text-5xl;
   }
 
   h2 {
-    @apply text-2xl font-semibold 2xl:text-4xl;
+    @apply text-3xl font-semibold 2xl:text-4xl;
   }
 }
 
@@ -122,10 +124,6 @@ body {
       @apply z-10 cursor-pointer rounded-full bg-linear-to-r from-[#12b4ff] to-[#ff39e1] px-6 py-2 text-lg font-semibold transition-all duration-300 ease-in-out hover:text-black;
     }
 
-    .title {
-      @apply text-3xl font-semibold lg:text-6xl;
-    }
-
     p {
       @apply lg:h3-semibold base-semibold;
     }
@@ -135,14 +133,14 @@ body {
     @apply relative w-full px-5 text-white 2xl:px-0;
 
     h2 {
-      @apply text-3xl font-semibold lg:text-6xl;
+      @apply text-3xl font-semibold lg:text-5xl;
     }
 
     .controls {
-      @apply absolute bottom-40 left-1/2 z-50 -translate-x-1/2 lg:bottom-40;
+      @apply absolute bottom-10 left-1/2 z-50 -translate-x-1/2 sm:bottom-30;
 
       .info {
-        @apply rounded-lg bg-black/20 px-2 py-1 text-xs;
+        @apply rounded-lg bg-black/20 px-2 py-1 text-sm;
       }
 
       .color-control {
@@ -167,12 +165,12 @@ body {
     }
 
     #canvas {
-      @apply relative z-40 h-[80vh]! w-full! lg:h-[90vh]!;
+      @apply relative z-40 h-[80vh]! w-full! touch-none lg:h-[90vh]!;
     }
   }
 
   #showcase {
-    @apply relative;
+    @apply relative overflow-x-hidden;
 
     .media {
       @apply relative lg:overflow-hidden;
@@ -191,6 +189,7 @@ body {
 
         @media (max-width: 1024px) {
           img {
+            @apply w-full;
             transform: matrix(1, 0, 0, 1, 0, 0);
           }
         }
@@ -205,11 +204,11 @@ body {
       }
 
       h2 {
-        @apply text-3xl font-semibold text-white lg:text-6xl;
+        @apply text-3xl font-semibold text-white lg:text-5xl;
       }
 
       h3 {
-        @apply text-xl font-semibold text-white lg:text-5xl;
+        @apply text-2xl font-semibold text-white lg:text-4xl;
       }
     }
   }
@@ -218,7 +217,7 @@ body {
     @apply relative flex h-full w-dvw flex-col items-center overflow-hidden;
 
     h2 {
-      @apply max-w-2xl text-center text-3xl font-semibold text-white lg:text-6xl;
+      @apply max-w-2xl text-center text-3xl font-semibold text-white lg:text-5xl;
     }
 
     .wrapper {
@@ -274,7 +273,7 @@ body {
     @apply relative w-full pt-40;
 
     h2 {
-      @apply mx-auto max-w-3xl text-center text-3xl font-semibold text-white lg:text-6xl;
+      @apply mx-auto max-w-3xl pb-40 text-center text-3xl font-semibold text-white sm:pb-0 lg:text-5xl;
     }
 
     #f-canvas {
@@ -294,11 +293,11 @@ body {
     @apply col-center container w-full gap-y-15 max-lg:px-5 lg:py-40;
 
     h2 {
-      @apply max-w-3xl text-center text-3xl font-semibold text-white lg:text-6xl;
+      @apply max-w-3xl text-center text-3xl font-semibold text-white lg:text-5xl;
     }
 
     h3 {
-      @apply text-center text-xl font-semibold text-[#F5F5F7] lg:text-3xl;
+      @apply text-center text-2xl font-semibold text-[#F5F5F7] lg:text-4xl;
     }
 
     .masonry {
@@ -311,12 +310,12 @@ body {
           @apply h-full rounded-3xl bg-[url(/highlight-bg.png)] bg-cover bg-no-repeat p-10 lg:pt-20 2xl:pt-32;
 
           p {
-            @apply max-w-2xs text-4xl font-semibold;
+            @apply max-w-2xs text-xl font-semibold sm:text-3xl;
           }
         }
 
         p {
-          @apply max-w-2xs text-4xl font-semibold;
+          @apply max-w-2xs text-xl font-semibold sm:text-3xl;
         }
 
         div:last-of-type {
@@ -332,7 +331,7 @@ body {
         @apply flex -translate-y-5 flex-col justify-between gap-5 opacity-0;
 
         p {
-          @apply max-w-2xs text-4xl font-semibold;
+          @apply max-w-2xs text-xl font-semibold sm:text-3xl;
         }
         .apple-gradient {
           @apply relative flex items-center gap-7 rounded-3xl p-10;
@@ -380,7 +379,7 @@ body {
           @apply h-full rounded-3xl bg-[#1D1D1F] p-10 lg:pt-20 2xl:pt-32;
 
           p {
-            @apply max-w-sm text-4xl font-semibold;
+            @apply max-w-sm text-xl font-semibold sm:text-3xl;
 
             .green-gradient {
               background: linear-gradient(90deg, #35a98a 0%, #6dd400 100%);
@@ -398,7 +397,7 @@ body {
     @apply container mx-auto py-7 max-lg:px-5;
 
     .info {
-      @apply flex-between;
+      @apply col-center sm:flex-between sm:flex-row;
 
       p {
         @apply text-sm font-medium;

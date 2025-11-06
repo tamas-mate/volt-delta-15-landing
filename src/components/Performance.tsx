@@ -7,7 +7,7 @@ import { performanceImages, performanceImgPositions } from "../constants";
 
 const Performance = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   useGSAP(
     () => {
@@ -70,7 +70,7 @@ const Performance = () => {
 
   return (
     <section id="performance" ref={sectionRef}>
-      <h2>Volt-level graphics. Game on.</h2>
+      <h2>Volt-level performance. Game on.</h2>
       <div className="wrapper">
         {performanceImages.map(({ id, src }, index) => (
           <img

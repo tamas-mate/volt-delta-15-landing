@@ -47,9 +47,9 @@ const Highlights = () => {
             <img src="/battery.png" alt="Battery" />
             <p>
               Up to
-              <span className="green-gradient"> 14 more hours </span>
+              <span className="green-gradient"> 18 more hours </span>
               on the go.
-              <span className="text-dark-100"> (Up to 24 hours total.)</span>
+              <span className="text-dark-100"> (Up to 32 hours total.)</span>
             </p>
           </div>
         </div>

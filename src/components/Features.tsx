@@ -7,7 +7,7 @@ import { useMediaQuery } from "react-responsive";
 import type { Group } from "three";
 
 import { features, featureSequence } from "../constants";
-import useMacbookStore from "../store";
+import useLaptopStore from "../store";
 import { cl } from "../utils/utils";
 import LaptopDelta from "./models/LaptopDelta";
 import Lights from "./three/Lights";
@@ -15,7 +15,7 @@ import Lights from "./three/Lights";
 const ModelScroll = () => {
   const groupRef = useRef<Group>(null);
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
-  const { setTexture } = useMacbookStore();
+  const { setTexture } = useLaptopStore();
 
   // preload all feature videos during component mount
   useEffect(() => {
@@ -86,7 +86,9 @@ const ModelScroll = () => {
       <Suspense
         fallback={
           <Html>
-            <h1 className="text-3xl text-white uppercase">Loading</h1>
+            <h2 className="hidden text-center text-3xl text-white uppercase sm:block">
+              Loading
+            </h2>
           </Html>
         }
       >
@@ -97,28 +99,56 @@ const ModelScroll = () => {
 };
 
 const Features = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+
   return (
     <section id="features">
       <h2>See it all in a new light</h2>
-      <Canvas id="f-canvas" camera={{}}>
-        <Lights />
-        <ambientLight intensity={0.5} />
-        <ModelScroll />
-      </Canvas>
-      <div className="absolute inset-0">
-        {features.map((feature, index) => (
-          <div
-            key={feature.highlight}
-            className={cl("box", `box${index + 1}`, feature.styles)}
-          >
-            <img src={feature.icon} alt={feature.highlight} />
-            <p>
-              <span className="text-white">{feature.highlight} </span>
-              {feature.text}
-            </p>
-          </div>
-        ))}
-      </div>
+      {!isMobile && (
+        <Canvas id="f-canvas">
+          <Lights />
+          <ambientLight intensity={0.5} />
+          <ModelScroll />
+        </Canvas>
+      )}
+      {!isMobile && (
+        <div className="absolute inset-0">
+          {features.map((feature, index) => (
+            <div
+              key={feature.highlight}
+              className={cl("box", `box${index + 1}`, feature.styles)}
+            >
+              <img src={feature.icon} alt={feature.highlight} />
+              <p>
+                <span className="text-white">{feature.highlight} </span>
+                {feature.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+      {isMobile && (
+        <div className="flex flex-col gap-y-15">
+          {features.map((feature, index) => (
+            <div key={feature.highlight} className="col-center gap-y-10 px-5">
+              <div>
+                <img src={feature.icon} alt={feature.highlight} />
+                <p>
+                  <span className="text-white">{feature.highlight} </span>
+                  {feature.text}
+                </p>
+              </div>
+              <video
+                src={featureSequence[index].videoPath}
+                loop
+                muted
+                autoPlay
+                playsInline
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
