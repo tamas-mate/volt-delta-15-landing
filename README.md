@@ -80,11 +80,13 @@ pnpm run dev
 
 Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
 
-#### Note on branding
+### Note on branding and asset use disclaimer
 
-Volt Labs and Delta 15 are fictional. All logos, icons, and visuals in the repo are original or generic, no third-party trademarks intended.
+Volt Labs and Delta 15 are fictional. All assets in this project are third-party placeholders used solely for learning/demonstration purposes (non-commercial).  
+If you are a rights holder and would like credit added or an image removed, please contact me at **<tamasmate.dev@gmail.com>** and I’ll address it promptly.  
+_No endorsement implied._
 
-#### Attribution
+### Attribution
 
 “Gaming Laptop” (<https://skfb.ly/6SuwL>) by **Vivien Deroche** is licensed under **CC BY 4.0**  
 <https://creativecommons.org/licenses/by/4.0/>
