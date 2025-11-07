@@ -37,7 +37,7 @@ const Highlights = () => {
           </div>
         </div>
         <div className="right-column">
-          <div className="apple-gradient">
+          <div className="volt-gradient">
             <img src="/ai.svg" alt="AI" />
             <p>
               Built for <br /> <span>Volt Sense.</span>

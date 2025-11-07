@@ -333,7 +333,7 @@ body {
         p {
           @apply max-w-2xs text-xl font-semibold sm:text-3xl;
         }
-        .apple-gradient {
+        .volt-gradient {
           @apply relative flex items-center gap-7 rounded-3xl p-10;
 
           background: #1d1d1f;
