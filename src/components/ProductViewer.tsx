@@ -16,7 +16,7 @@ const ProductViewer = () => {
       <h2 className="text-center">Explore</h2>
       <div className="controls">
         <p className="info">
-          Volt Delta 15 | Available in 12" & 14" in Space Gray & Dark colors
+          Volt Delta Series | Available in 12" & 14" in Space Gray & Dark colors
         </p>
         <div className="flex-center mt-5 gap-5">
           <div className="color-control">

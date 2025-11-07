@@ -22,7 +22,7 @@ const Highlights = () => {
   return (
     <section id="highlights">
       <h2>Now’s the time to go Delta.</h2>
-      <h3>Here’s what you get with Volt Delta 15.</h3>
+      <h3>Here’s what you get with Volt Delta Series.</h3>
       <div className="masonry">
         <div className="left-column">
           <div>
