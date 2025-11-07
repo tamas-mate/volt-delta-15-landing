@@ -81,7 +81,7 @@ const features = [
     id: 4,
     icon: "/feature-icon4.svg",
     highlight: "Volt Link.",
-    text: "Wirelessly send photos and large files between your phone, PC, and Delta 15-no cables, no cloud.",
+    text: "Wirelessly send photos and large files between your phone, PC, and Delta series no cables, no cloud.",
     styles: "right-5 md:right-20 top-[70%] opacity-0 translate-y-5",
   },
   {

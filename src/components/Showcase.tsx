@@ -35,7 +35,7 @@ const Showcase = () => {
       <div className="media">
         <video src="/videos/gameplay.mp4" loop muted autoPlay playsInline />
         <div className="mask">
-          <img src="/volt-delta-15.svg" alt="mask-logo" />
+          <img src="/volt-delta.svg" alt="mask-logo" />
         </div>
       </div>
       <div className="content">
@@ -46,14 +46,14 @@ const Showcase = () => {
               <p>
                 Meet{" "}
                 <span className="text-white">
-                  Volt Core X — the latest leap in Volt Labs engineering
+                  Volt Core X - the latest leap in Volt Labs engineering
                 </span>
-                . Built for Delta 15.
+                . Built for Delta Series.
               </p>
               <p>
-                It powers Volt Sense across Delta 15, so you can design, build,
-                and dominate with ease—inside a chassis that’s impossibly thin,
-                light, and unflinchingly tough.
+                It powers Volt Sense across Delta Series, so you can design,
+                build, and dominate with ease inside a chassis that’s impossibly
+                thin, light, and unflinchingly tough.
               </p>
               <p>
                 A re-engineered display pipeline delivers razor-sharp detail,

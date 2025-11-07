@@ -84,7 +84,7 @@ const Performance = () => {
       <div className="content">
         <p>
           Build worlds in Unreal, sculpt millions of polys in Blender, fine-tune
-          shots in Photoshop and still have headroom to play. Delta 15’s{" "}
+          shots in Photoshop and still have headroom to play. Delta series’s{" "}
           <span>Volt Core X</span> graphics engine brings next-gen hardware ray
           tracing and AI-assisted upscaling to keep frames high and lighting
           true. Our <span>VoltCache</span> dynamically prioritizes fast on-chip
