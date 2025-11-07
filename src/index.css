@@ -20,6 +20,8 @@
   src: url("/fonts/bold.otf");
 }
 
+@custom-variant hover (&:hover);
+
 * {
   scrollbar-color: var(--color-dark-100) var(--color-black);
 }
@@ -43,8 +45,8 @@ html {
 
 body {
   width: 100vw;
-  overflow-x: hidden;
   background-color: #000;
+  color: var(--color-light-100);
   font-family: var(--font-semibold);
 }
 
@@ -76,5 +78,350 @@ body {
   @apply text-xs font-medium;
 }
 
+@utility translate-up {
+  @apply transition-all duration-300 ease-in-out hover:-translate-y-0.5;
+}
+
+@layer base {
+  [id] {
+    scroll-margin-top: 7vh;
+  }
+
+  h1 {
+    @apply text-center text-4xl font-semibold 2xl:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold 2xl:text-4xl;
+  }
+}
+
 @layer components {
+  header {
+    @apply flex-center sticky top-0 z-60 min-h-[7vh] w-screen bg-black;
+
+    nav {
+      @apply flex-center md:flex-between container mx-auto px-5 2xl:px-0;
+
+      img {
+        @apply translate-up h-8 cursor-pointer lg:h-10;
+      }
+
+      ul {
+        @apply md:flex-center hidden gap-x-8;
+
+        a {
+          @apply font-regular cursor-pointer text-sm text-white opacity-80 transition-all duration-300 ease-in-out hover:underline hover:underline-offset-2 hover:opacity-100;
+        }
+      }
+    }
+  }
+
+  #hero {
+    @apply h-fit w-full text-white;
+
+    button {
+      @apply z-10 cursor-pointer rounded-full bg-linear-to-r from-[#12b4ff] to-[#ff39e1] px-6 py-2 text-lg font-semibold transition-all duration-300 ease-in-out hover:text-black;
+    }
+
+    p {
+      @apply lg:h3-semibold base-semibold;
+    }
+  }
+
+  #product-viewer {
+    @apply relative w-full px-5 text-white 2xl:px-0;
+
+    h2 {
+      @apply text-3xl font-semibold lg:text-5xl;
+    }
+
+    .controls {
+      @apply absolute bottom-10 left-1/2 z-50 -translate-x-1/2 sm:bottom-30;
+
+      .info {
+        @apply rounded-lg bg-black/20 px-2 py-1 text-sm;
+      }
+
+      .color-control {
+        @apply flex-between gap-4 rounded-full bg-neutral-800 px-6 py-3;
+
+        div {
+          @apply size-7 cursor-pointer rounded-full;
+        }
+
+        .active {
+          @apply ring-light-100 size-5 ring-5;
+        }
+      }
+
+      .size-control {
+        @apply small-medium flex-between gap-2 rounded-full bg-neutral-800 px-6 py-2.5;
+
+        div {
+          @apply flex-center size-8 cursor-pointer rounded-full bg-white text-black;
+        }
+      }
+    }
+
+    #canvas {
+      @apply relative z-40 h-[80vh]! w-full! touch-none lg:h-[90vh]!;
+    }
+  }
+
+  #showcase {
+    @apply relative overflow-x-hidden;
+
+    .media {
+      @apply relative lg:overflow-hidden;
+
+      video {
+        @apply w-full object-cover object-center;
+      }
+
+      .mask {
+        @apply absolute top-0 h-full;
+
+        img {
+          @apply h-full scale-150 lg:scale-100;
+          transform: matrix(80, 0, 0, 80, 0, 0);
+        }
+
+        @media (max-width: 1024px) {
+          img {
+            @apply w-full;
+            transform: matrix(1, 0, 0, 1, 0, 0);
+          }
+        }
+      }
+    }
+
+    .content {
+      @apply text-dark-100 relative z-10 my-5 bg-black text-xl font-semibold lg:-mt-40 lg:opacity-0 2xl:-mt-70;
+
+      .wrapper {
+        @apply container mx-auto flex flex-col justify-center gap-20 px-5 pb-20 lg:flex-row 2xl:px-0;
+      }
+
+      h2 {
+        @apply text-3xl font-semibold text-white lg:text-5xl;
+      }
+
+      h3 {
+        @apply text-2xl font-semibold text-white lg:text-4xl;
+      }
+    }
+  }
+
+  #performance {
+    @apply relative flex h-full w-dvw flex-col items-center overflow-hidden;
+
+    h2 {
+      @apply max-w-2xl text-center text-3xl font-semibold text-white lg:text-5xl;
+    }
+
+    .wrapper {
+      @apply relative h-[50vh] w-7xl lg:h-screen 2xl:w-400;
+
+      img {
+        @apply max-w-40 object-cover object-center lg:max-w-108 2xl:max-w-140;
+      }
+
+      .p1 {
+        @apply absolute bottom-1/2 left-[23%] z-1 max-sm:left-[33%];
+      }
+
+      .p2 {
+        @apply absolute right-[17%] bottom-[40%] z-3 max-sm:right-[37%];
+      }
+
+      .p3 {
+        @apply absolute right-[15%] bottom-1/4 z-2 max-sm:right-[35%];
+      }
+
+      .p4 {
+        @apply absolute right-[10%] bottom-[15%] z-1 max-sm:right-[30%];
+      }
+
+      .p5 {
+        @apply absolute bottom-[20%] left-1/2 -translate-x-1/2 scale-150;
+      }
+
+      .p6 {
+        @apply absolute bottom-1/4 left-1/4 z-2 max-sm:left-[35%];
+      }
+
+      .p7 {
+        @apply absolute bottom-[5%] left-[15%] z-3 max-sm:left-[35%];
+      }
+    }
+
+    .content {
+      @apply mx-auto mt-24 max-w-xl;
+
+      p {
+        @apply lg:h3-semibold base-semibold translate-y-10 px-5 text-center opacity-0;
+
+        span {
+          @apply text-white;
+        }
+      }
+    }
+  }
+
+  #features {
+    @apply relative w-full pt-40;
+
+    h2 {
+      @apply mx-auto max-w-3xl pb-40 text-center text-3xl font-semibold text-white sm:pb-0 lg:text-5xl;
+    }
+
+    #f-canvas {
+      @apply relative z-40 h-dvh! w-full!;
+    }
+
+    .box {
+      @apply absolute max-w-xs;
+
+      p {
+        @apply lg:h3-semibold base-semibold;
+      }
+    }
+  }
+
+  #highlights {
+    @apply col-center container w-full gap-y-15 max-lg:px-5 lg:py-40;
+
+    h2 {
+      @apply max-w-3xl text-center text-3xl font-semibold text-white lg:text-5xl;
+    }
+
+    h3 {
+      @apply text-center text-2xl font-semibold text-[#F5F5F7] lg:text-4xl;
+    }
+
+    .masonry {
+      @apply grid grid-cols-1 gap-5 text-[#F5F5F7] lg:grid-cols-2 xl:px-60;
+
+      .left-column {
+        @apply flex -translate-y-5 flex-col justify-between gap-5 opacity-0;
+
+        div:first-of-type {
+          @apply h-full rounded-3xl bg-[url(/highlight-bg.png)] bg-cover bg-no-repeat p-10 lg:pt-20 2xl:pt-32;
+
+          p {
+            @apply max-w-2xs text-xl font-semibold sm:text-3xl;
+          }
+        }
+
+        p {
+          @apply max-w-2xs text-xl font-semibold sm:text-3xl;
+        }
+
+        div:last-of-type {
+          @apply flex items-center gap-7 rounded-3xl bg-[#1D1D1F] p-10;
+
+          p {
+            @apply font-semibold lg:text-2xl 2xl:text-3xl;
+          }
+        }
+      }
+
+      .right-column {
+        @apply flex -translate-y-5 flex-col justify-between gap-5 opacity-0;
+
+        p {
+          @apply max-w-2xs text-xl font-semibold sm:text-3xl;
+        }
+        .volt-gradient {
+          @apply relative flex items-center gap-7 rounded-3xl p-10;
+
+          background: #1d1d1f;
+          background-clip: padding-box; /* !important */
+          border: 3px solid transparent; /* !important */
+
+          ::before {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            inset: 0px;
+            z-index: -1;
+            margin: -5px; /* !important */
+            border-radius: 24px; /* !important */
+            background: linear-gradient(
+              91deg,
+              #12b4ff 0%,
+              #ff39e1 42%,
+              #bb64ff 74%,
+              #0096ff 100%
+            );
+          }
+
+          p {
+            @apply font-semibold lg:text-2xl 2xl:text-3xl;
+
+            span {
+              background: linear-gradient(
+                91deg,
+                #0096ff 0%,
+                #ff39e1 42%,
+                #ff39e1 74%,
+                #12b4ff 100%
+              );
+              background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
+
+        div:last-of-type {
+          @apply h-full rounded-3xl bg-[#1D1D1F] p-10 lg:pt-20 2xl:pt-32;
+
+          p {
+            @apply max-w-sm text-xl font-semibold sm:text-3xl;
+
+            .green-gradient {
+              background: linear-gradient(90deg, #35a98a 0%, #6dd400 100%);
+              background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    @apply container mx-auto py-7 max-lg:px-5;
+
+    .info {
+      @apply col-center sm:flex-between sm:flex-row;
+
+      p {
+        @apply text-sm font-medium;
+
+        span {
+          @apply text-primary mx-0.5;
+        }
+      }
+    }
+
+    hr {
+      @apply my-7 text-[#424245];
+    }
+
+    .links {
+      @apply flex flex-col justify-between gap-5 text-sm max-lg:mt-5 lg:flex-row lg:items-center;
+
+      ul {
+        @apply flex flex-col gap-2.5 lg:flex-row lg:divide-x;
+
+        li {
+          @apply cursor-pointer hover:underline hover:underline-offset-2 lg:px-5;
+        }
+      }
+    }
+  }
 }

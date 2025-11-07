@@ -1,0 +1,29 @@
+<!-- /public/ai.svg -->
+<svg width="78" height="100" viewBox="0 0 78 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="voltGrad" x1="0" y1="0" x2="78" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9b5cff"/>
+      <stop offset="0.5" stop-color="#6ee7ff"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="voltGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#6ee7ff" flood-opacity="0.75"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#9b5cff" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- the "V" -->
+  <path d="M10 15 L39 85 L68 15"
+        stroke="url(#voltGrad)" stroke-width="6"
+        stroke-linecap="round" stroke-linejoin="round"
+        filter="url(#voltGlow)"/>
+
+  <!-- nodes -->
+  <circle cx="10" cy="15" r="4" fill="url(#voltGrad)"/>
+  <circle cx="39" cy="85" r="4" fill="url(#voltGrad)"/>
+  <circle cx="68" cy="15" r="4" fill="url(#voltGrad)"/>
+
+  <!-- tiny AI “neuron” dots -->
+  <circle cx="24.5" cy="50" r="2" fill="#fff" opacity="0.9"/>
+  <circle cx="53.5" cy="50" r="2" fill="#fff" opacity="0.9"/>
+</svg>

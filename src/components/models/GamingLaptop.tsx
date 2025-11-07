@@ -4,76 +4,73 @@ Command: npx gltfjsx@6.5.3 laptop-updated.glb -t -T
 Files: laptop-updated.glb [14.89MB] > C:\Users\Tomi\Downloads\laptop-updated-transformed.glb [773.41KB] (95%)
 */
 
-import { useGLTF /* , useTexture */ } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { type JSX } from "react";
 import * as THREE from "three";
 import type { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
-	nodes: {
-		Object_10: THREE.Mesh;
-		Object_4: THREE.Mesh;
-		Object_7: THREE.Mesh;
-		Object_14: THREE.Mesh;
-		Object_16: THREE.Mesh;
-	};
-	materials: {
-		PaletteMaterial001: THREE.MeshStandardMaterial;
-		PaletteMaterial002: THREE.MeshStandardMaterial;
-		["Material.004"]: THREE.MeshStandardMaterial;
-		["Material.009"]: THREE.MeshStandardMaterial;
-		["Material.010"]: THREE.MeshStandardMaterial;
-	};
-	animations: [];
+  nodes: {
+    Object_10: THREE.Mesh;
+    Object_4: THREE.Mesh;
+    Object_7: THREE.Mesh;
+    Object_14: THREE.Mesh;
+    Object_16: THREE.Mesh;
+  };
+  materials: {
+    PaletteMaterial001: THREE.MeshStandardMaterial;
+    PaletteMaterial002: THREE.MeshStandardMaterial;
+    ["Material.004"]: THREE.MeshStandardMaterial;
+    ["Material.009"]: THREE.MeshStandardMaterial;
+    ["Material.010"]: THREE.MeshStandardMaterial;
+  };
+  animations: [];
 };
 
-export function GamingLaptop(props: JSX.IntrinsicElements["group"]) {
-	const { nodes, materials } = useGLTF("/models/gaming-laptop-transformed.glb") as unknown as GLTFResult;
-	// const texture = useTexture("/screen.png");
-	// texture.colorSpace = THREE.SRGBColorSpace;
-	// texture.needsUpdate = true;
-	return (
-		<group {...props} dispose={null}>
-			{/* white button */}
-			<mesh
-				geometry={nodes.Object_10.geometry}
-				material={materials.PaletteMaterial001}
-				position={[0, 0.38, -0.1]}
-				rotation={[-0.2, -1.57, 1.57]}
-			/>
-			{/* frame */}
-			<mesh
-				geometry={nodes.Object_4.geometry}
-				material={materials.PaletteMaterial002}
-				position={[0, 0, 0]}
-				rotation={[-3.35, -1.58, 1.57]}
-			/>
-			{/* screen texture */}
-			{/* <mesh geometry={nodes.Object_7.geometry} position={[0, 0, 0]} rotation={[-3.35, -1.58, 1.57]}>
-				<meshStandardMaterial map={texture} />
-			</mesh> */}
-			<mesh
-				geometry={nodes.Object_7.geometry}
-				material={materials["Material.004"]}
-				position={[0, 0, 0]}
-				rotation={[-3.35, -1.58, 1.57]}
-			/>
-			{/* screen lid */}
-			<mesh
-				geometry={nodes.Object_14.geometry}
-				material={materials["Material.009"]}
-				position={[0, -0.1, 1.19]}
-				rotation={[0, -1.56, 0]}
-			/>
-			{/* keyboard */}
-			<mesh
-				geometry={nodes.Object_16.geometry}
-				material={materials["Material.010"]}
-				position={[0, -0.08, 1.19]}
-				rotation={[0, -1.56, 0]}
-			/>
-		</group>
-	);
+export default function GamingLaptop(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(
+    "/models/gaming-laptop-transformed.glb",
+  ) as unknown as GLTFResult;
+
+  return (
+    <group {...props} dispose={null}>
+      {/* white button */}
+      <mesh
+        geometry={nodes.Object_10.geometry}
+        material={materials.PaletteMaterial001}
+        position={[0, 0.38, -0.1]}
+        rotation={[-0.2, -1.57, 1.57]}
+      />
+      {/* frame */}
+      <mesh
+        geometry={nodes.Object_4.geometry}
+        material={materials.PaletteMaterial002}
+        position={[0, 0, 0]}
+        rotation={[-3.35, -1.58, 1.57]}
+      />
+      {/* screen texture */}
+      <mesh
+        geometry={nodes.Object_7.geometry}
+        material={materials["Material.004"]}
+        position={[0, 0, 0]}
+        rotation={[-3.35, -1.58, 1.57]}
+      />
+      {/* screen lid */}
+      <mesh
+        geometry={nodes.Object_14.geometry}
+        material={materials["Material.009"]}
+        position={[0, -0.1, 1.19]}
+        rotation={[0, -1.56, 0]}
+      />
+      {/* keyboard */}
+      <mesh
+        geometry={nodes.Object_16.geometry}
+        material={materials["Material.010"]}
+        position={[0, -0.08, 1.19]}
+        rotation={[0, -1.56, 0]}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/models/gaming-laptop-transformed.glb");
