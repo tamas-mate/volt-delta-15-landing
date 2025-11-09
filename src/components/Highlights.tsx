@@ -3,13 +3,13 @@ import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
 
 const Highlights = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   useGSAP(() => {
     gsap.to([".left-column", ".right-column"], {
       scrollTrigger: {
         trigger: "#highlights",
-        start: isMobile ? "bottom bottom" : "top top",
+        start: isMobile ? "top center" : "top top",
       },
       y: 0,
       opacity: 1,

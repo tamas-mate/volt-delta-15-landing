@@ -1,15 +1,27 @@
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 
-import { Suspense } from "react";
 import useLaptopStore from "../store";
 import { cl } from "../utils/utils";
 import Lights from "./three/Lights";
 import ModelSwitcher from "./three/ModelSwitcher";
 
 const ProductViewer = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const { color, scale, setColor, setScale } = useLaptopStore();
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+
+  const decideVideoPath = () => {
+    if (color === "#2e2c2e") {
+      return scale === 0.4
+        ? "/videos/laptop-small-dark.mp4"
+        : "/videos/laptop-large-dark.mp4";
+    } else {
+      return scale === 0.4
+        ? "/videos/laptop-small-gray.mp4"
+        : "/videos/laptop-large-gray.mp4";
+    }
+  };
 
   return (
     <section id="product-viewer">
@@ -55,27 +67,29 @@ const ProductViewer = () => {
           </div>
         </div>
       </div>
-      <Canvas
-        id="canvas"
-        dpr={[1, 1.5]}
-        gl={{
-          antialias: false,
-          stencil: false,
-          depth: true,
-          powerPreference: "high-performance",
-          preserveDrawingBuffer: false,
-        }}
-        camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}
-      >
-        <Lights />
-        <Suspense fallback={null}>
-          <ModelSwitcher
-            isMobile={isMobile}
-            color={color}
-            scale={isMobile ? scale - 0.1 : scale}
+      {isMobile && (
+        <div className="h-88 w-full">
+          <video
+            src={decideVideoPath()}
+            loop
+            muted
+            autoPlay
+            playsInline
+            className="h-full w-full object-fill"
           />
-        </Suspense>
-      </Canvas>
+        </div>
+      )}
+      {!isMobile && (
+        <Canvas
+          id="canvas"
+          camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}
+        >
+          <Lights />
+          <Suspense fallback={null}>
+            <ModelSwitcher color={color} scale={scale} />
+          </Suspense>
+        </Canvas>
+      )}
     </section>
   );
 };

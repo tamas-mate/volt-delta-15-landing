@@ -3,9 +3,11 @@ import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
 
 const Showcase = () => {
-  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   useGSAP(() => {
+    if (isMobile) return;
+
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: "#showcase",
@@ -17,18 +19,16 @@ const Showcase = () => {
       },
     });
 
-    if (!isTablet) {
-      timeline.to(".mask img", {
+    timeline
+      .to(".mask img", {
         transform: "scale(1.1)",
+      })
+      .to(".content", {
+        opacity: 1,
+        y: 0,
+        ease: "power1.in",
       });
-    }
-
-    timeline.to(".content", {
-      opacity: 1,
-      y: 0,
-      ease: "power1.in",
-    });
-  }, [isTablet]);
+  }, [isMobile]);
 
   return (
     <section id="showcase">
