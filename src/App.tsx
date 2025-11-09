@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="flex min-h-screen flex-col gap-y-15">
       <Navbar />
-      <main className="flex flex-col items-center gap-y-15">
+      <main className="flex flex-col items-center gap-y-30 lg:gap-y-15">
         <Hero />
         <ProductViewer />
         <Showcase />

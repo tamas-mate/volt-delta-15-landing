@@ -173,7 +173,7 @@ body {
     @apply relative overflow-x-hidden;
 
     .media {
-      @apply relative lg:overflow-hidden;
+      @apply relative md:overflow-hidden;
 
       video {
         @apply w-full object-cover object-center;
@@ -187,7 +187,7 @@ body {
           transform: matrix(80, 0, 0, 80, 0, 0);
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 768px) {
           img {
             @apply w-full;
             transform: matrix(1, 0, 0, 1, 0, 0);
