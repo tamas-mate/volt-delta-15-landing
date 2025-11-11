@@ -1,4 +1,8 @@
+import { useMediaQuery } from "react-responsive";
+
 const Hero = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
     <section id="hero">
       <div className="flex flex-col gap-y-15 md:gap-y-25 xl:gap-y-50">
@@ -15,9 +19,13 @@ const Hero = () => {
               A concept laptop showcasing modern web tech in 3D and motion.
             </p>
           </div>
-          <div className="max-w-[640px]">
+          <div className="max-w-[320px] lg:max-w-[640px]">
             <img
-              src="/gaming-laptop-left.png"
+              src={
+                isMobile
+                  ? "/gaming-laptop-left-min.png"
+                  : "/gaming-laptop-left.png"
+              }
               alt="gaming laptop"
               className="translate-up h-full w-full"
             />

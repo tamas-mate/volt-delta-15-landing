@@ -4,9 +4,10 @@ import { useMediaQuery } from "react-responsive";
 
 const Showcase = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobileHeight = useMediaQuery({ query: "(max-height: 600px)" });
 
   useGSAP(() => {
-    if (isMobile) return;
+    if (isMobile || isMobileHeight) return;
 
     const timeline = gsap.timeline({
       scrollTrigger: {
@@ -28,7 +29,7 @@ const Showcase = () => {
         y: 0,
         ease: "power1.in",
       });
-  }, [isMobile]);
+  }, [isMobile, isMobileHeight]);
 
   return (
     <section id="showcase">

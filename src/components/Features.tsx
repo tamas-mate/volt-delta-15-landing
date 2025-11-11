@@ -9,25 +9,26 @@ import ModelScroll from "./three/ModelScroll";
 
 const Features = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobileHeight = useMediaQuery({ query: "(max-height: 600px)" });
 
   return (
     <section id="features">
       <h2>See it all in a new light</h2>
-      {!isMobile && (
+      {!isMobile && !isMobileHeight && (
         <Canvas id="f-canvas">
           <Lights />
           <ambientLight intensity={0.5} />
           <ModelScroll />
         </Canvas>
       )}
-      {!isMobile && (
+      {!isMobile && !isMobileHeight && (
         <div className="absolute inset-0">
           {features.map((feature, index) => (
             <div
               key={feature.highlight}
               className={cl("box", `box${index + 1}`, feature.styles)}
             >
-              <img src={feature.icon} alt={feature.highlight} />
+              <img src={feature.icon} alt={feature.highlight} loading="lazy" />
               <p>
                 <span className="text-white">{feature.highlight} </span>
                 {feature.text}
@@ -36,7 +37,7 @@ const Features = () => {
           ))}
         </div>
       )}
-      {isMobile && (
+      {(isMobile || isMobileHeight) && (
         <div className="flex flex-col gap-y-15">
           {features.map((feature, index) => (
             <MobileFeaturesAccordion

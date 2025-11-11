@@ -77,6 +77,7 @@ const Performance = () => {
             key={id}
             src={src}
             className={id}
+            loading="lazy"
             alt={`Performance Image #${index}`}
           />
         ))}

@@ -9,7 +9,7 @@ const Footer = () => {
           or find an authorized Volt Partner near you. Questions?{" "}
           <span>support@voltlabs.dev</span>
         </p>
-        <img src="/ai.svg" alt="Volt Logo" className="size-6" />
+        <img src="/ai.svg" alt="Volt Logo" className="size-6" loading="lazy" />
       </div>
       <hr />
       <div className="links">

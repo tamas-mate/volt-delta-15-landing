@@ -14,7 +14,7 @@ const MobileFeaturesAccordion = ({
   return (
     <div key={feature.highlight} className="col-center gap-y-10 px-5">
       <div>
-        <img src={feature.icon} alt={feature.highlight} />
+        <img src={feature.icon} alt={feature.highlight} loading="lazy" />
         <p>
           <span className="text-white">{feature.highlight} </span>
           {feature.text}
@@ -27,9 +27,11 @@ const MobileFeaturesAccordion = ({
       </div>
       <video
         src={featureSequence[index].videoPath}
+        poster="/gaming-laptop-left.png"
         loop
         muted
-        autoPlay
+        preload="none"
+        controls
         playsInline
         className={isOpen ? "block" : "hidden"}
       />

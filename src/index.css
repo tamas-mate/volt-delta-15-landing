@@ -137,10 +137,10 @@ body {
     }
 
     .controls {
-      @apply static z-50 md:absolute md:bottom-30 md:left-1/2 md:-translate-x-1/2;
+      @apply static z-50 lg:absolute lg:bottom-30 lg:left-1/2 lg:-translate-x-1/2;
 
       .info {
-        @apply rounded-lg bg-black/20 px-2 py-1 text-center text-sm md:text-left;
+        @apply rounded-lg bg-black/20 px-2 py-1 text-center text-sm lg:text-left;
       }
 
       .color-control {
@@ -173,7 +173,7 @@ body {
     @apply relative overflow-x-hidden;
 
     .media {
-      @apply relative md:overflow-hidden;
+      @apply relative lg:overflow-hidden;
 
       video {
         @apply w-full object-cover object-center;
@@ -187,7 +187,7 @@ body {
           transform: matrix(80, 0, 0, 80, 0, 0);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 768px) or (max-height: 600px) {
           img {
             @apply w-full;
             transform: matrix(1, 0, 0, 1, 0, 0);
@@ -197,7 +197,7 @@ body {
     }
 
     .content {
-      @apply text-dark-100 relative z-10 my-5 bg-black text-xl font-semibold md:opacity-0 lg:-mt-40 2xl:-mt-70;
+      @apply text-dark-100 relative z-10 my-5 bg-black text-xl font-semibold lg:-mt-40 lg:opacity-0 2xl:-mt-70;
 
       .wrapper {
         @apply container mx-auto flex flex-col justify-center gap-20 px-5 pb-20 lg:flex-row 2xl:px-0;

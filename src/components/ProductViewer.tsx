@@ -9,6 +9,7 @@ import ModelSwitcher from "./three/ModelSwitcher";
 
 const ProductViewer = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobileHeight = useMediaQuery({ query: "(max-height: 600px)" });
   const { color, scale, setColor, setScale } = useLaptopStore();
 
   const decideVideoPath = () => {
@@ -67,19 +68,25 @@ const ProductViewer = () => {
           </div>
         </div>
       </div>
-      {isMobile && (
+      {(isMobile || isMobileHeight) && (
         <div className="h-88 w-full">
           <video
             src={decideVideoPath()}
+            poster={
+              color === "#2e2c2e"
+                ? "/volt-poster-dark.png"
+                : "/volt-poster-gray.png"
+            }
             loop
             muted
-            autoPlay
+            preload="none"
+            controls
             playsInline
             className="h-full w-full object-fill"
           />
         </div>
       )}
-      {!isMobile && (
+      {!isMobile && !isMobileHeight && (
         <Canvas
           id="canvas"
           camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}

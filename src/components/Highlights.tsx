@@ -26,11 +26,11 @@ const Highlights = () => {
       <div className="masonry">
         <div className="left-column">
           <div>
-            <img src="/laptop.png" alt="Laptop" />
+            <img src="/laptop.png" alt="Laptop" loading="lazy" />
             <p>Ace demanding projects 10x faster.</p>
           </div>
           <div>
-            <img src="/sun.png" alt="Sun" />
+            <img src="/sun.png" alt="Sun" loading="lazy" />
             <p>
               A stunning <br /> <span>VoltVision HDR</span> <br /> display.
             </p>
@@ -38,13 +38,13 @@ const Highlights = () => {
         </div>
         <div className="right-column">
           <div className="volt-gradient">
-            <img src="/ai.svg" alt="AI" />
+            <img src="/ai.svg" alt="AI" loading="lazy" />
             <p>
               Built for <br /> <span>Volt Sense.</span>
             </p>
           </div>
           <div>
-            <img src="/battery.png" alt="Battery" />
+            <img src="/battery.png" alt="Battery" loading="lazy" />
             <p>
               Up to
               <span className="green-gradient"> 18 more hours </span>
