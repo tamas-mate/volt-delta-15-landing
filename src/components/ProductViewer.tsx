@@ -33,11 +33,11 @@ const ProductViewer = () => {
         </p>
         <div className="flex-center mt-5 gap-5">
           <div className="color-control">
-            <div
+            <button
               onClick={() => setColor("#adb5bd")}
               className={cl("bg-neutral-300", color === "#adb5bd" && "active")}
             />
-            <div
+            <button
               onClick={() => setColor("#2e2c2e")}
               className={cl("bg-neutral-900", color === "#2e2c2e" && "active")}
             />

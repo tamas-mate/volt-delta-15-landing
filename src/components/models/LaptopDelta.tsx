@@ -6,25 +6,25 @@ Files: laptop-updated.glb [14.89MB] > C:\Users\Tomi\Downloads\laptop-updated-tra
 
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { type JSX } from "react";
-import * as THREE from "three";
+import { Mesh, MeshStandardMaterial } from "three";
 import type { GLTF } from "three-stdlib";
 
 import useLaptopStore from "../../store";
 
 type GLTFResult = GLTF & {
   nodes: {
-    Object_10: THREE.Mesh;
-    Object_4: THREE.Mesh;
-    Object_7: THREE.Mesh;
-    Object_14: THREE.Mesh;
-    Object_16: THREE.Mesh;
+    Object_10: Mesh;
+    Object_4: Mesh;
+    Object_7: Mesh;
+    Object_14: Mesh;
+    Object_16: Mesh;
   };
   materials: {
-    PaletteMaterial001: THREE.MeshStandardMaterial;
-    PaletteMaterial002: THREE.MeshStandardMaterial;
-    ["Material.004"]: THREE.MeshStandardMaterial;
-    ["Material.009"]: THREE.MeshStandardMaterial;
-    ["Material.010"]: THREE.MeshStandardMaterial;
+    PaletteMaterial001: MeshStandardMaterial;
+    PaletteMaterial002: MeshStandardMaterial;
+    ["Material.004"]: MeshStandardMaterial;
+    ["Material.009"]: MeshStandardMaterial;
+    ["Material.010"]: MeshStandardMaterial;
   };
   animations: [];
 };

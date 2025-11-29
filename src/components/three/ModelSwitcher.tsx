@@ -7,6 +7,8 @@ import type { Group, Material, Mesh } from "three";
 import GamingLaptop from "../models/GamingLaptop";
 import GamingLaptopGray from "../models/GamingLaptopGray";
 
+type GroupItem = { group: Group | null; value: number };
+
 const ANIMATION_DURATION = 1;
 const OFFSET_DISTANCE = 25;
 const SCALE_LARGE_DESKTOP = 0.6;
@@ -33,30 +35,35 @@ const ensureUniqueMaterials = (group: Group | null) => {
   });
 };
 
-const fadeMeshes = (group: Group | null, opacity: number) => {
-  if (!group) return;
-  group.traverse((child) => {
-    const mesh = child as Mesh;
-    if (mesh.isMesh) {
-      const mats = Array.isArray(mesh.material)
-        ? mesh.material
-        : [mesh.material];
-      mats.forEach((m: Material) => {
-        gsap.killTweensOf(m, "opacity"); // stop pending fades
-        gsap.to(m, { opacity, duration: 0.5, overwrite: true });
-      });
-    }
+const fadeMeshes = (groups: GroupItem[]) => {
+  groups.forEach(({ group, value }) => {
+    if (!group) return;
+
+    group.traverse((child) => {
+      const mesh = child as Mesh;
+      if (mesh.isMesh) {
+        const mats = Array.isArray(mesh.material)
+          ? mesh.material
+          : [mesh.material];
+        mats.forEach((m: Material) => {
+          gsap.killTweensOf(m, "opacity"); // stop pending fades
+          gsap.to(m, { opacity: value, duration: 0.5, overwrite: true });
+        });
+      }
+    });
   });
 };
 
-const moveGroup = (group: Group | null, x: number) => {
-  if (!group) return;
+const moveGroups = (groups: GroupItem[]) => {
+  groups.forEach(({ group, value }) => {
+    if (!group) return;
 
-  gsap.to(group.position, {
-    x,
-    duration: ANIMATION_DURATION,
-    ease: "power1.inOut",
-    overwrite: "auto",
+    gsap.to(group.position, {
+      x: value,
+      duration: ANIMATION_DURATION,
+      ease: "power1.inOut",
+      overwrite: "auto",
+    });
   });
 };
 
@@ -76,51 +83,69 @@ const ModelSwitcher = ({ color, scale }: { color: string; scale: number }) => {
       largeLaptopGrayRef,
     ].forEach((r) => ensureUniqueMaterials(r.current));
 
-    fadeMeshes(smallLaptopRef.current, 0);
-    fadeMeshes(largeLaptopRef.current, 1);
-    fadeMeshes(smallLaptopGrayRef.current, 0);
-    fadeMeshes(largeLaptopGrayRef.current, 0);
+    fadeMeshes([
+      { group: smallLaptopRef.current, value: 0 },
+      { group: largeLaptopRef.current, value: 1 },
+      { group: smallLaptopGrayRef.current, value: 0 },
+      { group: largeLaptopGrayRef.current, value: 0 },
+    ]);
   }, []);
 
   useGSAP(() => {
     if (showLargeLaptop && !showGrayLaptop) {
-      moveGroup(smallLaptopRef.current, -OFFSET_DISTANCE);
-      moveGroup(largeLaptopRef.current, 0);
-      moveGroup(smallLaptopGrayRef.current, -OFFSET_DISTANCE);
-      moveGroup(largeLaptopGrayRef.current, OFFSET_DISTANCE);
-      fadeMeshes(smallLaptopRef.current, 0);
-      fadeMeshes(largeLaptopRef.current, 1);
-      fadeMeshes(smallLaptopGrayRef.current, 0);
-      fadeMeshes(largeLaptopGrayRef.current, 0);
+      moveGroups([
+        { group: smallLaptopRef.current, value: -OFFSET_DISTANCE },
+        { group: largeLaptopRef.current, value: 0 },
+        { group: smallLaptopGrayRef.current, value: -OFFSET_DISTANCE },
+        { group: largeLaptopGrayRef.current, value: OFFSET_DISTANCE },
+      ]);
+      fadeMeshes([
+        { group: smallLaptopRef.current, value: 0 },
+        { group: largeLaptopRef.current, value: 1 },
+        { group: smallLaptopGrayRef.current, value: 0 },
+        { group: largeLaptopGrayRef.current, value: 0 },
+      ]);
     } else if (!showLargeLaptop && !showGrayLaptop) {
-      moveGroup(smallLaptopRef.current, 0);
-      moveGroup(largeLaptopRef.current, OFFSET_DISTANCE);
-      moveGroup(smallLaptopGrayRef.current, -OFFSET_DISTANCE);
-      moveGroup(largeLaptopGrayRef.current, OFFSET_DISTANCE);
-      fadeMeshes(smallLaptopRef.current, 1);
-      fadeMeshes(largeLaptopRef.current, 0);
-      fadeMeshes(smallLaptopGrayRef.current, 0);
-      fadeMeshes(largeLaptopGrayRef.current, 0);
+      moveGroups([
+        { group: smallLaptopRef.current, value: 0 },
+        { group: largeLaptopRef.current, value: OFFSET_DISTANCE },
+        { group: smallLaptopGrayRef.current, value: -OFFSET_DISTANCE },
+        { group: largeLaptopGrayRef.current, value: OFFSET_DISTANCE },
+      ]);
+      fadeMeshes([
+        { group: smallLaptopRef.current, value: 1 },
+        { group: largeLaptopRef.current, value: 0 },
+        { group: smallLaptopGrayRef.current, value: 0 },
+        { group: largeLaptopGrayRef.current, value: 0 },
+      ]);
     } else if (showLargeLaptop && showGrayLaptop) {
-      moveGroup(smallLaptopGrayRef.current, -OFFSET_DISTANCE);
-      moveGroup(largeLaptopGrayRef.current, 0);
-      moveGroup(smallLaptopRef.current, -OFFSET_DISTANCE);
-      moveGroup(largeLaptopRef.current, OFFSET_DISTANCE);
-      fadeMeshes(smallLaptopGrayRef.current, 0);
-      fadeMeshes(largeLaptopGrayRef.current, 1);
-      fadeMeshes(smallLaptopRef.current, 0);
-      fadeMeshes(largeLaptopRef.current, 0);
+      moveGroups([
+        { group: smallLaptopGrayRef.current, value: -OFFSET_DISTANCE },
+        { group: largeLaptopGrayRef.current, value: 0 },
+        { group: smallLaptopRef.current, value: -OFFSET_DISTANCE },
+        { group: largeLaptopRef.current, value: OFFSET_DISTANCE },
+      ]);
+      fadeMeshes([
+        { group: smallLaptopGrayRef.current, value: 0 },
+        { group: largeLaptopGrayRef.current, value: 1 },
+        { group: smallLaptopRef.current, value: 0 },
+        { group: largeLaptopRef.current, value: 0 },
+      ]);
     } else if (!showLargeLaptop && showGrayLaptop) {
-      moveGroup(smallLaptopGrayRef.current, 0);
-      moveGroup(largeLaptopGrayRef.current, OFFSET_DISTANCE);
-      moveGroup(smallLaptopRef.current, -OFFSET_DISTANCE);
-      moveGroup(largeLaptopRef.current, OFFSET_DISTANCE);
-      fadeMeshes(smallLaptopGrayRef.current, 1);
-      fadeMeshes(largeLaptopGrayRef.current, 0);
-      fadeMeshes(smallLaptopRef.current, 0);
-      fadeMeshes(largeLaptopRef.current, 0);
+      moveGroups([
+        { group: smallLaptopGrayRef.current, value: 0 },
+        { group: largeLaptopGrayRef.current, value: OFFSET_DISTANCE },
+        { group: smallLaptopRef.current, value: -OFFSET_DISTANCE },
+        { group: largeLaptopRef.current, value: OFFSET_DISTANCE },
+      ]);
+      fadeMeshes([
+        { group: smallLaptopGrayRef.current, value: 1 },
+        { group: largeLaptopGrayRef.current, value: 0 },
+        { group: smallLaptopRef.current, value: 0 },
+        { group: largeLaptopRef.current, value: 0 },
+      ]);
     }
-  }, [scale, color]);
+  }, [showLargeLaptop, showGrayLaptop]);
 
   const controlsConfig = {
     snap: true,
